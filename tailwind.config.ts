@@ -7,9 +7,9 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "640px", // Narrow max-width for readability
       },
     },
     extend: {
@@ -47,6 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        safe: {
+          DEFAULT: "hsl(var(--safe))",
+          foreground: "hsl(var(--safe-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -63,27 +71,24 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
+      fontSize: {
+        // Larger base sizes for readability in crisis
+        'xs': ['0.875rem', { lineHeight: '1.5' }],
+        'sm': ['1rem', { lineHeight: '1.6' }],
+        'base': ['1.125rem', { lineHeight: '1.7' }],
+        'lg': ['1.25rem', { lineHeight: '1.5' }],
+        'xl': ['1.5rem', { lineHeight: '1.4' }],
+        '2xl': ['1.875rem', { lineHeight: '1.3' }],
+        '3xl': ['2.25rem', { lineHeight: '1.2' }],
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      spacing: {
+        // Touch-friendly spacing
+        '18': '4.5rem',
+        '22': '5.5rem',
+      },
+      minHeight: {
+        'touch': '48px',
+        'touch-lg': '64px',
       },
     },
   },
