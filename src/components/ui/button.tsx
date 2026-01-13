@@ -5,29 +5,39 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 min-h-[48px] min-w-[48px]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-primary text-primary-foreground active:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground active:bg-destructive/90",
+        outline: "border-2 border-border bg-transparent text-foreground active:bg-muted",
+        secondary: "bg-secondary text-secondary-foreground active:bg-secondary/80",
+        ghost: "text-foreground active:bg-muted",
+        link: "text-primary underline-offset-4 active:underline",
+        // Emergency button - high visibility, large touch target
+        emergency: "bg-primary text-primary-foreground font-semibold border-2 border-primary active:bg-primary/90 min-h-[64px] text-lg",
+        // Section navigation
+        section: "bg-card text-foreground border border-border active:bg-muted text-left justify-start min-h-[80px] p-5 rounded-xl",
+        // Urgent section - for RIGHT NOW
+        urgent: "bg-primary/10 text-foreground border-2 border-primary active:bg-primary/20 text-left justify-start min-h-[100px] p-6 rounded-xl",
+        // Back/navigation button
+        back: "text-muted-foreground active:text-foreground p-2 min-w-[44px]",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-12 px-6 py-3",
+        sm: "h-10 px-4 py-2 text-sm",
+        lg: "h-14 px-8 py-4 text-lg",
+        xl: "h-16 px-8 py-5 text-xl",
+        icon: "h-12 w-12",
+        full: "w-full h-auto",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -40,7 +50,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
-  },
+  }
 );
 Button.displayName = "Button";
 
