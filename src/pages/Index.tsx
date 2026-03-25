@@ -22,7 +22,7 @@ const Index = () => {
           <div className="flex items-center gap-3 mb-2">
             <Shield className="w-8 h-8 text-primary" />
             <h1 className="text-2xl font-bold text-foreground">
-              When The World Is War
+              When The World in War
             </h1>
           </div>
           <p className="text-muted-foreground">
